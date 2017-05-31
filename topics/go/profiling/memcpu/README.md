@@ -6,8 +6,8 @@ Using benchmarks you can profile your programs and see exactly where your perfor
 
 #### CPU Profiling
 ```
-   go test -run none -bench . -benchtime 3s -benchmem -cpuprofile cpu.out
-   go tool pprof benchmarks.test cpu.out
+   $ go test -run none -bench . -benchtime 3s -benchmem -cpuprofile cpu.out
+   $ go tool pprof benchmarks.test cpu.out
    
    (pprof) list algOne
    (pprof) web list algOne
@@ -17,8 +17,8 @@ Using benchmarks you can profile your programs and see exactly where your perfor
 
 #### Memory Profiling
 ```
-    go test -run none -bench . -benchtime 3s -benchmem -memprofile mem.out
-    go tool pprof -<PICK_MEM_PROFILE> benchmarks.test mem.out
+    $ go test -run none -bench . -benchtime 3s -benchmem -memprofile mem.out
+    $ go tool pprof -<PICK_MEM_PROFILE> benchmarks.test mem.out
 
     (pprof) list algOne
     (pprof) web list algOne

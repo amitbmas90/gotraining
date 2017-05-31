@@ -6,9 +6,9 @@ Testing and Tracing allows us to see mutex profiles.
 
 	We can get mutex profiles by running a test.
 
-	go test -mutexprofile mutex.out
-	go tool pprof mutex.test mutex.out
-	list TestMutexProfile
+	$ go test -mutexprofile mutex.out
+	$ go tool pprof mutex.test mutex.out
+	$ list TestMutexProfile
 
 ## Links
 

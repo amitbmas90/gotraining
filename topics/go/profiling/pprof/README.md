@@ -6,8 +6,8 @@ Using the http/pprof support you can profile your web applications and services 
 
 We have a website that we will use to learn and explore more about profiling. This project is just creating a struct type value, marshaling it to JSON and using that as the response.
 
-	go build
-	./pprof
+	$ go build
+	$ ./pprof
 
 	http://localhost:4000/sendjson
 
@@ -16,7 +16,7 @@ We have a website that we will use to learn and explore more about profiling. Th
 To add load to the service while running profiling we can run these command.
 
 	// Send 1M request using 8 connections.
-	hey -m POST -c 8 -n 1000000 "http://localhost:4000/sendjson"
+	$ hey -m POST -c 8 -n 1000000 "http://localhost:4000/sendjson"
 
 ### Raw http/pprof
 
@@ -34,7 +34,7 @@ Run a single search from the Browser and then refresh the profile information.
 
 Put some load of the web application. Review the raw profiling information once again.
 
-	hey -m POST -c 8 -n 1000000 "http://localhost:4000/sendjson"
+	$ hey -m POST -c 8 -n 1000000 "http://localhost:4000/sendjson"
 
 ### Looking at Heap Profiles
 
@@ -92,7 +92,7 @@ NumGC         uint32 // Number of GC that have run
 
 Run the Go pprof tool in another window or tab to review heap information.
 
-	go tool pprof -<PICK_MEM_PROFILE> ./pprof http://localhost:4000/debug/pprof/heap
+	$ go tool pprof -<PICK_MEM_PROFILE> ./pprof http://localhost:4000/debug/pprof/heap
 
 	// Useful to see current status of heap.
 	-inuse_space  : Allocations live at the time of profile  	** default
@@ -112,7 +112,7 @@ Run the Go pprof tool in another window or tab to review heap information.
 
 Run the Go pprof tool in another window or tab to review cpu information.
 
-	go tool pprof ./pprof http://localhost:4000/debug/pprof/profile
+	$ go tool pprof ./pprof http://localhost:4000/debug/pprof/profile
 
 	_Note that goroutines in "syscall" state consume an OS thread, other goroutines do not
 	(except for goroutines that called runtime.LockOSThread, which is, unfortunately, not
@@ -126,12 +126,12 @@ Explore using the **top**, **list**, **web** and **web list** commands.
 
 Take a snapshot of the current heap profile. Then do the same for the cpu profile.
 
-    curl -s http://localhost:4000/debug/pprof/heap > base.heap
+    $ curl -s http://localhost:4000/debug/pprof/heap > base.heap
 
 After some time, take another snapshot:
 
-    curl -s http://localhost:4000/debug/pprof/heap > current.heap
+    $ curl -s http://localhost:4000/debug/pprof/heap > current.heap
 
 Now compare both snapshots against the binary and get into the pprof tool:
 
-    go tool pprof -inuse_space -base base.heap ./pprof current.heap
+    $ go tool pprof -inuse_space -base base.heap ./pprof current.heap

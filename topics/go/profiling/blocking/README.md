@@ -6,16 +6,16 @@ Testing and Tracing allows us to see blocking profiles.
 
 	We can get blocking profiles by running a test.
 
-	go test -blockprofile block.out
-	go tool pprof blocking.test block.out
-	list TestLatency
+	$ go test -blockprofile block.out
+	$ go tool pprof blocking.test block.out
+	$ list TestLatency
 
 ## Running a Trace
 
 Once you have a test established you can use the **-trace trace.out** option with the go test tool.
 
-	go test -trace trace.out
-	go tool trace trace.out
+	$ go test -trace trace.out
+	$ go tool trace trace.out
 
 Run these command and let's explore each trace.
 
